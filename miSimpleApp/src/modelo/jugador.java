@@ -13,11 +13,24 @@ public class jugador {
     private static int id=0;
     private int points;
     public jugador(){
+        
+    }
+    public jugador(int id,String name,int points){
+        this.id=id;
+        this.name=name;
+        this.points=points;
+    }
+    public jugador(jugador gamer){
+        jugador player=gamer;
+        this.id=player.getId();
+        this.name=player.getName();
+        this.points=player.getPoints();
+    }
+    public void crear(){
         id++;
         name="Jugador"+id;
         points=0;
     }
-
     public String getName() {
         return name;
     }
@@ -26,7 +39,7 @@ public class jugador {
         this.name = name;
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
@@ -36,6 +49,11 @@ public class jugador {
 
     public void setPoints(int points) {
         this.points += points;
+    }
+
+    @Override
+    public String toString() {
+        return "jugador{" + "name=" + name + ", points=" + points + '}';
     }
     
 }

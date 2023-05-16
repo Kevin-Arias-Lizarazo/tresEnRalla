@@ -4,6 +4,8 @@
  */
 package vista;
 
+import java.awt.Container;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -17,24 +19,37 @@ public class principal extends JFrame{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("");
         this.setSize(300,300);
-        this.setLocale(null);
+        this.setLocationRelativeTo(null);
         setResizable(false);
     }
-    public void actualizar(){
+    public principal(JPanel panel) {
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setTitle("");
+        this.setSize(300,300);
+        this.setLocale(null);
+        setResizable(false);
+        this.add(panel);
         this.revalidate();
         this.repaint();
     }
-    public void limpiar(){
-        this.removeAll();
-    }
     public void cambiar(JPanel panel){
         this.setVisible(false);
-        limpiar();
-        agregar(panel);
+        Container contentPane = getContentPane();
+        contentPane.removeAll();
+        
+        JPanel panelc = panel;
+        this.setSize(panelc.getSize());
+        this.setLocale(null);
+        this.add(panel);
+        
+        this.revalidate();
+        this.repaint();
+        this.setVisible(true);
     }
     public void agregar(JPanel panel){
         this.add(panel);
         this.setVisible(true);
-        actualizar();
+        this.revalidate();
+        this.repaint();
     }
 }
