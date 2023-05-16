@@ -4,10 +4,15 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author DANNNA
  */
-public class almacen {
+public class almacen extends ArrayList{
+
+    public almacen() {
+    }
     
 }

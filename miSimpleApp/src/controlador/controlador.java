@@ -6,8 +6,27 @@ package controlador;
 
 /**
  *
- * @author DANNNA
- */
-public class controlador {
+ * @author DANNNA**/
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import modelo.*;
+import vista.*;
+public class controlador implements ActionListener{
+    almacen guarda;
+    public controlador(){
+        guarda = new almacen();
+        while(guarda.size()<2){
+            jugador generico = new jugador();
+            guarda.add(generico);
+        }
+        
+    }
+    public void menu(){
+        
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
     
 }
