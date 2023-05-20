@@ -44,17 +44,22 @@ public class options extends JPanel {
         tamaño.setText(size);
         cantidadGanar.setText(win);
         
+        numerJugadores.addActionListener(escuchadorT);
+        numerJugadores.addActionListener(escuchadorT);
+        numerJugadores.addActionListener(escuchadorT);
+        
         add(numerJugadores);
         add(tamaño);
         add(cantidadGanar);
         
         save = new JButton("Guardar");
-        Nsave = new JButton("No guardar");
+        Nsave = new JButton("Menu");
 
         save.setBounds(350, 400, 100, 40);
         Nsave.setBounds(50, 400, 100, 40);
 
         save.addActionListener(escuchadorB);
+        
         Nsave.addActionListener(escuchadorB);
 
         save.setBackground(Color.white);

@@ -55,17 +55,22 @@ public class controlador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JTextField jTextField = (JTextField) e.getSource();
+                String cadena1 = jTextField.getText();
+                String cadena2 = "";
                 switch (jTextField.getName()) {
                     case "players":
-                        jTextField.setText(preferencias.setNumPlayers(jTextField.getText()));
+                        cadena2 = preferencias.setNumPlayers(cadena1);
                         break;
                     case "size":
-                        jTextField.setText(preferencias.setTamaño(jTextField.getText()));
+                        cadena2 = preferencias.setTamaño(cadena1);
                         break;
                     case "win":
-                        jTextField.setText(preferencias.setVictoria(jTextField.getText()));
+                        cadena2 = preferencias.setVictoria(cadena1);
+                        break;
+                    default:
                         break;
                 }
+                jTextField.setText(cadena2);
             }
         };
         options setings = new options(escuchadorB, escuchadorT,preferencias.getSTamaño(),preferencias.getSPlayers(),preferencias.getSVictoria());
