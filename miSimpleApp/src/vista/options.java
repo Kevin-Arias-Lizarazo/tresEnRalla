@@ -5,48 +5,70 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import modelo.configuracion;
 
-/**
- *
- * @author DANNNA
- */
-public class options extends JPanel{
-    private JButton perfil;
+public class options extends JPanel {
+    private JButton save;
+    private JButton Nsave;
     private JTextField numerJugadores;
     private JTextField tamaño;
     private JTextField cantidadGanar;
-    public options(){
-        
+
+    public options() {
+
     }
-    public options(configuracion config,ActionListener escuchador){
-        configuracion setings = config;
-        
+
+    public options(ActionListener escuchadorB,ActionListener escuchadorT,String size,String num,String win) {
+
         this.setSize(500, 500);
         setLayout(null);
         
+        numerJugadores = new JTextField();
+        tamaño = new JTextField();
+        cantidadGanar = new JTextField();
         
-        perfil = new JButton("Perfiles");
+        numerJugadores.setName("players");
+        tamaño.setName("size");
+        cantidadGanar.setName("win");
+
+        numerJugadores.setBounds(250,25,40,30);
+        tamaño.setBounds(250,100,40,30);
+        cantidadGanar.setBounds(250,175,40,30);
+
+        numerJugadores.setText(num);
+        tamaño.setText(size);
+        cantidadGanar.setText(win);
         
+        add(numerJugadores);
+        add(tamaño);
+        add(cantidadGanar);
         
-        perfil.setBounds(400, 400, 100, 50);
-        
-        
-        perfil.addActionListener(escuchador);
-        
-        
-        perfil.setBackground(Color.white);
-        
-        
-        add(perfil);
-        
-        
-        perfil.setVisible(true);
+        save = new JButton("Guardar");
+        Nsave = new JButton("No guardar");
+
+        save.setBounds(350, 400, 100, 40);
+        Nsave.setBounds(50, 400, 100, 40);
+
+        save.addActionListener(escuchadorB);
+        Nsave.addActionListener(escuchadorB);
+
+        save.setBackground(Color.white);
+        Nsave.setBackground(Color.white);
+
+        add(save);
+        add(Nsave);
+
+        save.setVisible(true);
+        Nsave.setVisible(true);
+        numerJugadores.setVisible(true);
+        cantidadGanar.setVisible(true);
+        tamaño.setVisible(true);
         this.setVisible(true);
     }
-    
+
 }

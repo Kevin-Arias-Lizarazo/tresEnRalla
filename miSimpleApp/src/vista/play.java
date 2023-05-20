@@ -7,10 +7,6 @@ package vista;
 import javax.swing.JPanel;
 import modelo.jugador;
 
-/**
- *
- * @author DANNNA
- */
 public class play extends JPanel{
     jugador player1;
     jugador player2;

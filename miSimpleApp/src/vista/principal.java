@@ -9,10 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/**
- *
- * @author DANNNA
- */
 public class principal extends JFrame{
 
     public principal() {
@@ -37,8 +33,7 @@ public class principal extends JFrame{
         Container contentPane = getContentPane();
         contentPane.removeAll();
         
-        JPanel panelc = panel;
-        this.setSize(panelc.getSize());
+        this.setSize(panel.getSize());
         this.setLocale(null);
         this.add(panel);
         

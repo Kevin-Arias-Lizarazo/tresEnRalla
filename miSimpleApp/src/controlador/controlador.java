@@ -4,75 +4,91 @@
  */
 package controlador;
 
-/**
- *
- * @author DANNNA**/
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JTextField;
 import modelo.*;
 import vista.*;
-public class controlador{
-    
-    JFrame vm = new JFrame();
-    almacen guarda;
+
+public class controlador {
+
+    private almacen perfils;
     principal vista;
-    configuracion configura;
-    public controlador(){
-        guarda = new almacen();
-        while(guarda.size()<2){
-            jugador generico = new jugador();
-            generico.crear();
-            guarda.add(generico);
-        }
+    private configuracion configura;
+
+    public controlador() {
+        perfils = new almacen();
         vista = new principal();
         configura = new configuracion();
         menu();
     }
-    public void jugar(){
-        
+
+    public void jugar() {
+
     }
-    public void configurar(){
-        ActionListener escuchador = new ActionListener() {
+
+    public void configurar() {
+        configuracion preferencias = new configuracion(configura.getNumPlayers(), configura.getTamaño(), configura.getVictoria());
+        ActionListener escuchadorB = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JButton boton=(JButton) e.getSource();
-                switch(boton.getText()){
-                    case "Perfiles":
+                JButton boton = (JButton) e.getSource();
+                switch (boton.getText()) {
+                    case "Guardar":
                         vista.setVisible(false);
-                        
-                        
+                        configura.setNumPlayers(preferencias.getNumPlayers());
+                        configura.setTamaño(preferencias.getTamaño());
+                        configura.setVictoria(preferencias.getVictoria());
+                        menu();
                         break;
-                    case "Menu":
+                    case "No guardar":
                         vista.setVisible(false);
-                        vm.setVisible(true);
+                        menu();
                         break;
                     default:
                         break;
                 }
             }
         };
-        options setings = new options(configura,escuchador);
+        ActionListener escuchadorT = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JTextField jTextField = (JTextField) e.getSource();
+                switch (jTextField.getName()) {
+                    case "players":
+                        jTextField.setText(preferencias.setNumPlayers(jTextField.getText()));
+                        break;
+                    case "size":
+                        jTextField.setText(preferencias.setTamaño(jTextField.getText()));
+                        break;
+                    case "win":
+                        jTextField.setText(preferencias.setVictoria(jTextField.getText()));
+                        break;
+                }
+            }
+        };
+        options setings = new options(escuchadorB, escuchadorT,preferencias.getSTamaño(),preferencias.getSPlayers(),preferencias.getSVictoria());
         vista.cambiar(setings);
     }
-    public void menu(){
+
+    public void menu() {
         ActionListener escuchador = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JButton boton=(JButton) e.getSource();
-                switch(boton.getText()){
+                JButton boton = (JButton) e.getSource();
+                switch (boton.getText()) {
                     case "Jugar":
-                        vm.setVisible(false);
+                        vista.setVisible(false);
                         jugar();
                         break;
                     case "Configuracion":
-                        vm.setVisible(false);
+                        vista.setVisible(false);
                         configurar();
+                        break;
+                    case "Perfiles":
+                        vista.setVisible(false);
+                        System.out.println("3");
                         break;
                     case "Salir":
                         System.exit(0);
@@ -83,12 +99,8 @@ public class controlador{
             }
         };
         menu option = new menu(escuchador);
-        vm.setLocale(null);
-        vm.setSize(option.getSize());
-        vm.add(option);
-        vm.setVisible(true);
-//        vista.cambiar(option);
-//        vista.setTitle("Menu");
+        vista.cambiar(option);
+        vista.setTitle("Menu");
     }
-    
+
 }

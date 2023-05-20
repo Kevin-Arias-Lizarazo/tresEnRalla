@@ -4,10 +4,6 @@
  */
 package modelo;
 
-/**
- *
- * @author DANNNA
- */
 public class jugador {
     private String name;
     private static int id=0;

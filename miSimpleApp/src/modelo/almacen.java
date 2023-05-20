@@ -8,18 +8,12 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-/**
- *
- * @author DANNNA
- */
 public class almacen extends ArrayList {
-
-    private static configuracion preferencias;
 
     public almacen() {
 
     }
-
+    
     //devuele el jugador del indice dado
     public jugador buscarIn(int i) {
         return (jugador) this.get(i);
