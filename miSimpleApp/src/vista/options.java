@@ -18,11 +18,11 @@ public class options extends JPanel {
     private JTextField numerJugadores;
     private JTextField tamaño;
     private JTextField cantidadGanar;
-
+    private ActionListener escuchadorlocal;
     public options() {
 
-    }
-
+    }   
+    
     public options(ActionListener escuchadorB,ActionListener escuchadorT,String size,String num,String win) {
 
         this.setSize(500, 500);
@@ -45,8 +45,8 @@ public class options extends JPanel {
         cantidadGanar.setText(win);
         
         numerJugadores.addActionListener(escuchadorT);
-        numerJugadores.addActionListener(escuchadorT);
-        numerJugadores.addActionListener(escuchadorT);
+        tamaño.addActionListener(escuchadorT);
+        cantidadGanar.addActionListener(escuchadorT);
         
         add(numerJugadores);
         add(tamaño);
@@ -67,7 +67,7 @@ public class options extends JPanel {
 
         add(save);
         add(Nsave);
-
+        
         save.setVisible(true);
         Nsave.setVisible(true);
         numerJugadores.setVisible(true);
@@ -75,5 +75,5 @@ public class options extends JPanel {
         tamaño.setVisible(true);
         this.setVisible(true);
     }
-
+    
 }

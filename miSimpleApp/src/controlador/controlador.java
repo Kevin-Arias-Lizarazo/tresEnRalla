@@ -30,21 +30,18 @@ public class controlador {
 
     public void configurar() {
         configuracion preferencias = new configuracion(configura.getNumPlayers(), configura.getTamaño(), configura.getVictoria());
+        JTextField [] contiene = new ;
         ActionListener escuchadorB = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JButton boton = (JButton) e.getSource();
+                JButton boton =(JButton) e.getSource();
                 switch (boton.getText()) {
                     case "Guardar":
-                        vista.setVisible(false);
-                        configura.setNumPlayers(preferencias.getNumPlayers());
-                        configura.setTamaño(preferencias.getTamaño());
-                        configura.setVictoria(preferencias.getVictoria());
-                        menu();
+                        System.out.println(preferencias.getNumPlayers());
+                        System.out.println(preferencias.getTamaño());
+                        System.out.println(preferencias.getVictoria());
                         break;
                     case "No guardar":
-                        vista.setVisible(false);
-                        menu();
                         break;
                     default:
                         break;
@@ -54,6 +51,7 @@ public class controlador {
         ActionListener escuchadorT = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Evento");
                 JTextField jTextField = (JTextField) e.getSource();
                 String cadena1 = jTextField.getText();
                 String cadena2 = "";

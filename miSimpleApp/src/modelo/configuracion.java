@@ -79,6 +79,10 @@ public class configuracion {
     }
 
     private static int validarNumPlayers(String cadena, int tamaño) {
+        //si el tamaño es muy corto o largo
+        if(cadena.length() != 2 && cadena.length() != 1){
+            return 2;
+        }
         //eror por letras
         if (cadena.matches("[0-9]+") == false) {
             return 1;
@@ -110,13 +114,17 @@ public class configuracion {
     }
 
     private static int validarTamaño(String cadena) {
+        //si el tamaño es muy corto o largo
+        if(cadena.length() != 2 && cadena.length() != 1){
+            return 2;
+        }
         //eror por letras
         if (cadena.matches("[0-9]+") == false) {
             return 1;
         }
         //demasiados espacios o muy pocos
         int numero = Integer.parseInt(cadena);
-        if (numero < 3 || 20 > numero) {
+        if (numero < 3 || numero > 20  ) {
             return 2;
         }
 
@@ -125,7 +133,7 @@ public class configuracion {
 
     public String setTamaño(String cadena) {
         int error = 0;
-        String[] errores = {"El tamaño no puede tener caracteres\nEscriba el valor nuevamente", "El tamaño debe ser mayor a 2 y menor a 21\nEscriba un valor menor a 10 y mayor a 1"};
+        String[] errores = {"El tamaño no puede tener caracteres\nEscriba el valor nuevamente", "El tamaño debe ser mayor a 2 y menor a 21\nEscriba un valor menor a 21 y mayor a 1"};
         error = validarTamaño(cadena);
         while (error != 0) {
             cadena = JOptionPane.showInputDialog(errores[error - 1]);
@@ -136,6 +144,10 @@ public class configuracion {
     }
 
     private static int validarVictoria(String cadena, int tamaño) {
+        //si el tamaño es muy corto o largo
+        if(cadena.length() != 2 && cadena.length() != 1){
+            return 2;
+        }
         //eror por letras
         if (cadena.matches("[0-9]+") == false) {
             return 1;
